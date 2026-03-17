@@ -3,42 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Royal Auto CPM</title>
+  <title>Royal Auto CPM - Discord Stili Sohbet</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page">
-    <header class="header">
-      <div class="hero-img-wrap">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Royal Auto CPM araç profil resmi" class="hero-img" />
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="logo">RAC</div>
+      <div class="server-list">
+        <div class="server-pill active">R</div>
       </div>
-      <div>
-        <p class="eyebrow">Royal Auto CPM</p>
-        <h1>Asil Otomatik Sohbet</h1>
-        <p class="subtitle">Sadece sohbet alanı. Yapay zeka cevapları yok, gerçek kullanıcı mesajları.</p>
+      <div class="channels">
+        <div class="section-title">KANALLAR</div>
+        <button class="channel active" data-room="genel"># genel-sohbet</button>
+        <button class="channel" data-room="ilan"># araç-ilan</button>
       </div>
-    </header>
+    </aside>
 
-    <main class="chat-card">
-      <div class="rooms">
-        <button class="room-btn active" data-room="genel">Genel Sohbet</button>
-        <button class="room-btn" data-room="ilan">Araç İlan</button>
-      </div>
+    <main class="chat-panel">
+      <header class="top-bar">
+        <div>
+          <div class="room-title">Royal Auto CPM</div>
+          <div class="room-subtitle">Sadece gerçek kullanıcı mesajları</div>
+        </div>
+      </header>
 
-      <section class="chat-body">
-        <div class="room-header"><strong id="roomTitle">Genel Sohbet</strong></div>
-        <div id="chatLog" class="chat-log" aria-live="polite"></div>
-      </section>
+      <section class="messages" id="chatLog"></section>
 
-      <form id="chatForm" class="input-row">
-        <input id="messageInput" type="text" placeholder="Bir şeyler yaz..." autocomplete="off" required />
+      <form id="chatForm" class="chat-input-row">
+        <input id="messageInput" type="text" placeholder="Mesaj yaz..." autocomplete="off" required />
         <button type="submit">Gönder</button>
       </form>
     </main>
-
-    <footer class="footer">
-      <p>Kurucu: <strong>Royal Auto CPM</strong> • Herkes yazabilir ve sohbet edebilir.</p>
-    </footer>
   </div>
   <script src="script.js"></script>
 </body>

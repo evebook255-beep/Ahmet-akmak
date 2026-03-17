@@ -1,28 +1,27 @@
+:root { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0d1117; color: #dfe2e5; }
 * { box-sizing: border-box; }
-:root { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #111827; background: #f4f6fb; }
-body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top right, #ffffff 0%, #edf1f9 42%, #e2e8f0 100%); display: grid; place-items: center; padding: 1rem; }
-.page { width: min(100%, 820px); display: flex; flex-direction: column; gap: 1rem; }
-.header { background: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.65); border-radius: 18px; backdrop-filter: blur(5px); padding: .7rem 1.25rem 1rem; box-shadow: 0 10px 25px rgba(20, 24, 40, 0.06); }
-.hero-img-wrap { width: 100%; border-radius: 14px; overflow: hidden; margin-bottom: .7rem; }
-.hero-img { width: 100%; height: 160px; object-fit: cover; display: block; filter: saturate(1.02) contrast(0.96); background: #e2e8f0; border-radius: 12px; }
-.eyebrow { margin: 0; font-size: .75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #6366f1; font-weight: 700; }
-.header h1 { margin: .25rem 0; font-size: 1.7rem; color: #111827; }
-.subtitle { margin: 0; color: #4b5563; }
-.chat-card { border-radius: 20px; background: #fff; border: 1px solid #e5e7eb; box-shadow: 0 14px 36px rgba(15, 23, 42, 0.09); overflow: hidden; display: flex; flex-direction: column; height: 70vh; min-height: 420px; }
-.chat-log { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: .55rem; background: linear-gradient(to bottom, #f8fafc, #ffffff); }
-.message { max-width: 78%; padding: .55rem .75rem; border-radius: 12px; line-height: 1.4; border: 1px solid transparent; }
-.message.user { align-self: flex-end; background: #6366f1; color: white; border-color: #5b21b6; }
-.message.bot { align-self: flex-start; background: #f3f4f6; color: #111827; border-color: #dbeafe; }
-.input-row { border-top: 1px solid #e5e7eb; background: #fff; display: flex; gap: .5rem; padding: .7rem; }
-input { flex: 1; border: 1px solid #cbd5e1; border-radius: 10px; font-size: .95rem; padding: .6rem .75rem; background: #f9fafb; outline: none; transition: border-color .2s ease, box-shadow .2s ease; }
-input:focus { border-color: #6366f1; box-shadow: 0 0 0 2px rgba(99, 102, 241, .15); }
-button { border: none; background: #4f46e5; color: white; border-radius: 10px; font-weight: 600; cursor: pointer; padding: .6rem 1rem; transition: transform .15s ease, filter .15s ease; }
-button:hover { filter: brightness(1.05); transform: translateY(-1px); }
-.footer { text-align: center; color: #6b7280; font-size: .85rem; margin-top: .2rem; }
-.rooms { display: flex; border-bottom: 1px solid #e5e7eb; background: #fff; }
-.room-btn { border: 0; background: transparent; color: #374151; font-weight: 600; font-size: .9rem; padding: .65rem 0.95rem; cursor: pointer; border-bottom: 2px solid transparent; transition: color .2s ease, border-color .2s ease; }
-.room-btn.active { color: #1f2937; border-color: #4f46e5; }
-.room-btn:hover { color: #111827; }
-.room-header { padding: .7rem 1rem 0 .95rem; font-size: .9rem; color: #374151; border-bottom: 1px solid #eef2ff; }
-.chat-body { display: flex; flex-direction: column; flex: 1; min-height: 340px; }
-@media (max-width: 720px) { .chat-card { height: 66vh; } }
+body { margin: 0; min-height: 100vh; background: linear-gradient(180deg, #0b111a 0%, #0a0f17 100%); display: grid; place-items: center; padding: 0.7rem; }
+.app-shell { width: min(100%, 1080px); min-height: 75vh; background: #131a24; border-radius: 14px; box-shadow: 0 25px 60px rgba(0,0,0,.55); overflow: hidden; display: grid; grid-template-columns: 220px 1fr; border: 1px solid #1f2a3a; }
+.sidebar { background: #0f1623; border-right: 1px solid #1f2a3a; padding: .8rem; display: flex; flex-direction: column; gap: .9rem; }
+.logo { font-size: .9rem; font-weight: 700; letter-spacing: .06em; color: #58a6ff; text-align: center; margin-bottom: .3rem; }
+.server-list { display: flex; justify-content: center; }
+.server-pill { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: #1d2640; color: #c9d1d9; font-weight: 600; margin-bottom: .7rem; }
+.server-pill.active { background: #58a6ff; color: #0b1222; }
+.channels { background: #111926; border-radius: 10px; padding: .5rem; border: 1px solid #21314d; }
+.section-title { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: #8b949e; margin-bottom: .5rem; }
+.channel { width: 100%; text-align: left; border: none; background: transparent; color: #c9d1d9; font-size: .9rem; border-radius: 8px; padding: .45rem .55rem; margin-bottom: .2rem; cursor: pointer; transition: background .15s ease; }
+.channel:hover { background: #263249; }
+.channel.active { background: #2f436a; color: #fff; }
+.chat-panel { display: flex; flex-direction: column; background: #0f1626; }
+.top-bar { border-bottom: 1px solid #1e2e4b; padding: .8rem 1rem; background: #111b2d; }
+.room-title { font-size: 1.1rem; font-weight: 700; color: #f0f6ff; }
+.room-subtitle { color: #8b949e; font-size: .82rem; }
+.messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: .55rem; background: linear-gradient(to bottom, #101b2d, #0f1728); }
+.message { max-width: 75%; border-radius: 10px; padding: .5rem .7rem; border: 1px solid #24344f; font-size: .9rem; }
+.message.user { margin-left: auto; background: #2d4a84; color: #fff; }
+.message.other { background: #1f2f52; color: #e8edf6; }
+.chat-input-row { background: #0d172a; border-top: 1px solid #21314f; padding: .7rem; display: flex; gap: .5rem; }
+.chat-input-row input { flex: 1; border: 1px solid #2f445f; border-radius: 8px; padding: .55rem .7rem; background: #0e1a2f; color: #f6f8ff; }
+.chat-input-row input:focus { outline: 1px solid #58a6ff; border-color: #58a6ff; }
+.chat-input-row button { border: none; background: #3888ff; color: white; border-radius: 8px; font-weight: 600; padding: .55rem .9rem; cursor: pointer; }
+@media (max-width: 900px) { .app-shell { width: min(100%, 100%); grid-template-columns: 1fr; min-height: 95vh; } .sidebar { flex-direction: row; gap: .5rem; overflow-x: auto; } .channels { display: none; } }
