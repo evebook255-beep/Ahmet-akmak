@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Royal Auto CPM - Sohbet</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Royal Auto CPM - Gerçek Chat</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -13,8 +16,8 @@
       <div class="server-list"><div class="server-pill active">R</div></div>
       <div class="channels">
         <div class="section-title">KANALLAR</div>
-        <button class="channel active" data-room="genel"># genel-sohbet</button>
-        <button class="channel" data-room="ilan"># araç-ilan</button>
+        <button class="channel active" id="roomGenel"># genel</button>
+        <button class="channel" id="roomSohbet"># sohbet</button>
       </div>
     </aside>
 
@@ -22,18 +25,17 @@
       <header class="top-bar">
         <div>
           <div class="room-title">Royal Auto CPM</div>
-          <div class="room-subtitle">Gerçek kullanıcı sohbet kanalı</div>
+          <div class="room-subtitle">Hemen gir, gerçek kullanıcılarla sohbet et.</div>
         </div>
         <div class="user-row">
-          <label>Kullanıcı adı:</label>
-          <input id="usernameInput" type="text" maxlength="20" placeholder="Adın..." />
+          <button id="loginBtn">Google ile Giriş Yap</button>
         </div>
       </header>
 
-      <section class="messages" id="chatLog"></section>
+      <section class="messages" id="messages"></section>
 
       <form id="chatForm" class="chat-input-row">
-        <input id="messageInput" type="text" placeholder="Mesaj yaz..." autocomplete="off" required />
+        <input id="msg" type="text" placeholder="Mesaj yaz..." autocomplete="off" required />
         <button type="submit">Gönder</button>
       </form>
     </main>

@@ -1,69 +1,65 @@
-const chatLogEl = document.getElementById('chatLog');
-const form = document.getElementById('chatForm');
-const input = document.getElementById('messageInput');
-const usernameInput = document.getElementById('usernameInput');
-const roomButtons = document.querySelectorAll('.channel');
-let activeRoom = 'genel';
-
-const STORAGE_KEY = 'rac-chat-state';
-const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-
-const rooms = {
-  genel: state.genel || [],
-  ilan: state.ilan || [],
+const firebaseConfig = {
+  apiKey: "BURAYA_YAPISTIR",
+  authDomain: "BURAYA",
+  databaseURL: "BURAYA",
+  projectId: "BURAYA"
 };
-let username = state.username || '';
 
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({
-    username,
-    genel: rooms.genel,
-    ilan: rooms.ilan,
-  }));
-}
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.database();
 
-function appendMessage(text, from, save=true) {
-  const msg = document.createElement('div');
-  msg.className = 'message ' + (from === 'user' ? 'user' : 'other');
-  msg.textContent = text;
-  chatLogEl.append(msg);
-  chatLogEl.scrollTop = chatLogEl.scrollHeight;
-  if (save) {
-    rooms[activeRoom].push({ text, from });
-    saveState();
-  }
-}
+const messagesEl = document.getElementById('messages');
+const msgInput = document.getElementById('msg');
+const chatForm = document.getElementById('chatForm');
+const loginBtn = document.getElementById('loginBtn');
+const roomGenel = document.getElementById('roomGenel');
+const roomSohbet = document.getElementById('roomSohbet');
 
-function renderRoom() {
-  chatLogEl.innerHTML = '';
-  rooms[activeRoom].forEach(m => appendMessage(m.text, m.from, false));
-}
+let user = null;
+let room = 'genel';
+let currentRef = null;
 
-roomButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    roomButtons.forEach(x => x.classList.remove('active'));
-    btn.classList.add('active');
-    activeRoom = btn.dataset.room;
-    renderRoom();
+function setActiveRoom(sel) {
+  room = sel;
+  roomGenel.classList.toggle('active', room === 'genel');
+  roomSohbet.classList.toggle('active', room === 'sohbet');
+  messagesEl.innerHTML = '';
+  if (currentRef) currentRef.off('child_added');
+  currentRef = db.ref('rooms/' + room);
+  currentRef.on('child_added', snap => {
+    const data = snap.val();
+    const d = document.createElement('div');
+    d.innerHTML = `<b>${data.name}:</b> ${data.text}`;
+    messagesEl.appendChild(d);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
   });
+}
+
+roomGenel.addEventListener('click', () => setActiveRoom('genel'));
+roomSohbet.addEventListener('click', () => setActiveRoom('sohbet'));
+
+loginBtn.addEventListener('click', () => {
+  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then(res => {
+      user = res.user;
+      loginBtn.textContent = user.displayName;
+      loginBtn.disabled = true;
+      setActiveRoom(room);
+    })
+    .catch(() => alert('Giriş yapılamadı.'));
 });
 
-usernameInput.value = username;
-usernameInput.addEventListener('input', () => {
-  username = usernameInput.value.trim();
-  saveState();
-});
-
-form.addEventListener('submit', e => {
+chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const text = input.value.trim();
+  const text = msgInput.value.trim();
   if (!text) return;
-  if (!username) {
-    alert('Önce kullanıcı adını girin.');
+  if (!user) {
+    alert('Önce giriş yapın.');
     return;
   }
-  appendMessage(`${username}: ${text}`, 'user');
-  input.value = '';
+  db.ref('rooms/' + room).push({ name: user.displayName, text });
+  msgInput.value = '';
 });
 
-renderRoom();
+setActiveRoom('genel');
