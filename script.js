@@ -5,15 +5,15 @@ const roomButtons = document.querySelectorAll('.room-btn');
 const roomTitle = document.getElementById('roomTitle');
 
 const rooms = {
-  genel: [{ who: 'bot', text: 'Hoş geldiniz! Genel sohbete başlayabilirsiniz.' }],
-  ilan: [{ who: 'bot', text: 'Araç ilan alanına hoş geldiniz. Model ve fiyat yazabilirsiniz.' }],
+  genel: [],
+  ilan: [],
 };
 let activeRoom = 'genel';
 
 function renderRoom() {
   chatLogEl.innerHTML = '';
-  rooms[activeRoom].forEach((m) => appendMessage(m.text, m.who, false));
   roomTitle.textContent = activeRoom === 'genel' ? 'Genel Sohbet' : 'Araç İlan';
+  rooms[activeRoom].forEach((m) => appendMessage(m.text, m.who, false));
 }
 
 function appendMessage(text, who, save = true) {
