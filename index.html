@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Royal Auto CPM - Gerçek Chat</title>
+<title>Royal Auto CPM - Topluluk Sohbeti</title>
 <link rel="stylesheet" href="styles.css" />
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -25,10 +22,11 @@
       <header class="top-bar">
         <div>
           <div class="room-title">Royal Auto CPM</div>
-          <div class="room-subtitle">Hemen gir, gerçek kullanıcılarla sohbet et.</div>
+          <div class="room-subtitle">Anlık topluluk sohbeti (tarayıcı tabanlı demo)</div>
         </div>
         <div class="user-row">
-          <button id="loginBtn">Google ile Giriş Yap</button>
+          <input id="nameInput" type="text" maxlength="24" placeholder="Takma ad yaz..." />
+          <button id="loginBtn">Sohbete Katıl</button>
         </div>
       </header>
 
