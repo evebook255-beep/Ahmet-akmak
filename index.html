@@ -3,21 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sade Sohbet</title>
+  <title>Royal Auto CPM</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="page">
     <header class="header">
       <div>
-        <p class="eyebrow">Sohbet</p>
-        <h1>Sade ve Şık</h1>
-        <p class="subtitle">Hızlı bir demo sohbet arayüzü. Mesaj yaz, gönder ve cevapları gör.</p>
+        <p class="eyebrow">Royal Auto CPM</p>
+        <h1>Asil Otomatik Sohbet</h1>
+        <p class="subtitle">Royal Auto CPM ile akıcı ve modern sohbet deneyimi.</p>
       </div>
     </header>
 
     <main class="chat-card">
-      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      <div class="rooms">
+        <button class="room-btn active" data-room="genel">Genel Sohbet</button>
+        <button class="room-btn" data-room="ilan">Araç İlan</button>
+      </div>
+
+      <section class="chat-body">
+        <div class="room-header"><strong id="roomTitle">Genel Sohbet</strong></div>
+        <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      </section>
 
       <form id="chatForm" class="input-row">
         <input id="messageInput" type="text" placeholder="Bir şeyler yaz..." autocomplete="off" required />
@@ -26,7 +34,7 @@
     </main>
 
     <footer class="footer">
-      <p>Bu bir demo sohbet tasarımıdır. Kod basit ve düz HTML/CSS/JS ile çalışır.</p>
+      <p>Kurucu: <strong>Royal Auto CPM - Ahmet</strong> • Herkes yazabilir ve sohbet edebilir.</p>
     </footer>
   </div>
   <script src="script.js"></script>
