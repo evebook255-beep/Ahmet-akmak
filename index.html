@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sade Sohbet</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Sohbet</p>
+        <h1>Sade ve Şık</h1>
+        <p class="subtitle">Hızlı bir demo sohbet arayüzü. Mesaj yaz, gönder ve cevapları gör.</p>
+      </div>
+    </header>
+
+    <main class="chat-card">
+      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+
+      <form id="chatForm" class="input-row">
+        <input id="messageInput" type="text" placeholder="Bir şeyler yaz..." autocomplete="off" required />
+        <button type="submit">Gönder</button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p>Bu bir demo sohbet tasarımıdır. Kod basit ve düz HTML/CSS/JS ile çalışır.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
