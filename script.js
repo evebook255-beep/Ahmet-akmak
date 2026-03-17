@@ -25,25 +25,6 @@ function appendMessage(text, who, save = true) {
   if (save) rooms[activeRoom].push({ who, text });
 }
 
-function getAutoReply(room, inputText) {
-  const text = inputText.trim().toLowerCase();
-  if (!text) return 'Lütfen bir mesaj gir.';
-
-  if (room === 'genel') {
-    if (text.includes('selam') || text.includes('merhaba')) return 'Merhaba! Royal Auto CPM’e hoş geldin.';
-    if (text.includes('nasıl') || text.includes('naber')) return 'Güzel, sen nasılsın?';
-    return 'Genel sohbet alanı: her konudan yazabilirsiniz.';
-  }
-
-  if (room === 'ilan') {
-    if (text.includes('fiyat') || text.includes('fiyatı')) return 'Fiyat bilgisi için modeli ve km’yi yazabilirsiniz.';
-    if (text.includes('model') || text.includes('marka')) return 'Bu aracı ilan kısmında paylaştığınız için teşekkürler.';
-    return 'Araç ilan: model, yıl, km, fiyat gibi bilgileri paylaşabilirsiniz.';
-  }
-
-  return 'Mesaj kaydedildi.';
-}
-
 roomButtons.forEach((button) => {
   button.addEventListener('click', () => {
     roomButtons.forEach((x) => x.classList.remove('active'));
@@ -59,9 +40,6 @@ form.addEventListener('submit', (e) => {
   if (!value) return;
   appendMessage(value, 'user');
   input.value = '';
-  setTimeout(() => {
-    appendMessage(getAutoReply(activeRoom, value), 'bot');
-  }, 180);
 });
 
 renderRoom();
